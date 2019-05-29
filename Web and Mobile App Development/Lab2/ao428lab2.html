@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Classic html, nothing to explain deaply-->
+<html>
+<head>
+	<title>Lab 2</title>
+	<!-- Including javascript with ajax-jquery component-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	//From user's key, i get the zipcode from a generated key.
+		function getZipcode(){
+			//User Input
+			var userInput = document.getElementById("input").value;
+			//Starting a URL request for the geolookup
+			var xhttp = new XMLHttpRequest();
+		
+			xhttp.onreadystatechange = function(){//Actions inside the function
+				if(xhttp.status == 200 && xhttp.readyState == 4){
+					var json = $.parseJSON(xhttp.responseText);//extracting jsons
+					var zipCode = json.location.zip;//extracting zipcode
+					document.getElementById("div").innerHTML = zipCode + "<br>";//pasting zipcode on the div
+					getWeather(userInput,zipCode);//Forecasting weather in this function
+				}
+			}
+			var URL_FIRST = "http://api.wunderground.com/api/" + userInput + "/geolookup/q/autoip.json";
+			xhttp.open("GET",URL_FIRST,true);
+			xhttp.send();//closing the url request
+		}
+		function getWeather(userInput,zipCode){//Forecast finding for the zipcode
+			var xhttp_SECOND = new XMLHttpRequest();
+			xhttp_SECOND.onreadystatechange = function(){
+				if(xhttp_SECOND.status == 200 && xhttp_SECOND.readyState == 4){
+					var json1 = $.parseJSON(xhttp_SECOND.responseText);
+					for(var i=1; i< 25;i++){//loopong through hours to print every forecast to the div
+						var time = json1.hourly_forecast[i].FCTTIME.pretty;
+						var icon = json1.hourly_forecast[i].icon_url;
+						var temp = json1.hourly_forecast[i].temp.english;
+						document.getElementById("div_SECOND").innerHTML += time + " " + "<img src ='" + icon + "'/>" + temp + "<br/>";//printing to the div
+					}		
+				}
+			}
+			var URL_SECOND = "http://api.wunderground.com/api/"+ userInput+"/hourly/q/"+ zipCode+".json";
+			xhttp_SECOND.open("GET",URL_SECOND,true);
+			xhttp_SECOND.send();//closing url
+		}
+	</script>
+</head>
+<body>
+	<form><!-- buttons and text field, nothing unordinary-->
+		<input id="input" type="text">
+		<button type="button" id="lunch" onclick="getZipcode()">Get Weather!</button>
+		<p> My Key: c0e2d4a64a675bcb</p>
+	</form>
+	<div id="div"></div>
+	<div id="div_SECOND"></div>
+</body>
+</html>

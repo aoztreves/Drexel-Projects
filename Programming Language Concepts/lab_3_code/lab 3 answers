@@ -1,0 +1,9 @@
+lab 3 answers
+
+iii)
+I believe i wrote it to the paper to the answer for this question
+2)
+I couldnt do this question
+3)
+You can find the code in the file. In order to make sure we have a tree height of 2 we need to make sure when we add 8 to the list and if it is the child of the most right node then we had to have h=2.
+4)it is implemented please check the code.

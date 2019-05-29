@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!--
+	Aslan oztreves
+	21/11/2016
+-->
+<project>
+	<path id="project.class.path">
+		<pathelement path='${classpath}'/>
+		<pathelement location='.'/>
+	</path>
+	<target name='run' depends='compile'>
+		<java classname='run'>
+			<classpath refid="project.class.path"/>
+			<arg value='input.infix'/>
+		</java>
+
+	</target>
+	<target name='compile' depends='Calculator'/>
+	<target name='Calculator'>
+		<javac srcdir='.' includes='Calculator.java' includeantruntime='false'/>
+	</target>
+	<target name='Operand'>
+		<javac srcdir='.' includes='Operand.java' includeantruntime='false'/>
+	</target>
+	<target name='Operator'>
+		<javac srcdir='.' includes='Operator.java' includeantruntime='false'/>
+	</target>
+	<target name='Token'>
+		<javac srcdir='.' includes='Token.java' includeantruntime='false'/>
+	</target>
+	<target name='opType'>
+		<javac srcdir='.' includes='opType.java' includeantruntime='false'/>
+	</target>
+	
+
+	<target name='clean'>
+		<delete>
+			<fileset dir='./'>
+				<include name='*class'/>
+			</fileset>
+		</delete>
+	</target>
+</project>

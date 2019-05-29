@@ -1,0 +1,6 @@
+lab 4 answers
+
+i)
+complexity of euclid's algorithm is n^2 and i believe it is the same for gcd because we try to loop through the given numbers, until we hit the right one.
+ii)
+I think this is big o logn because all we do is to go throught the list and make sure the word is included. the last function only checks the last so i would assume it is just n.

@@ -1,0 +1,79 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Fibonnacci Sequence</title>
+<script type="text/javascript">
+//This function gets the user name as a string and parses into integer then calls the next function
+	function getUserInputConvertToInt(form){
+		var userInput = document.getElementById("input").value;
+		var userInputInt = parseInt(userInput);
+		calculationOfFibouserInputInt(userInputInt,userInput);
+	}
+//This function checks if the userinput is an empty string or a negative number, if neither; it calculates the fibonnacci sequence for the desire input and saves into an array called fibonnacci. Calling the next function at the end.
+	function calculationOfFibouserInputInt(userInputInt,userInput){
+		if (userInput == "") { document.getElementById('results').innerHTML = "Invalid Input"; } //For invalid input
+		else { 
+			if(userInputInt < 0) { 
+				document.getElementById('results').innerHTML = "Cannot compute Fib of a negative integer"; 
+				} //For negative numbers
+			else {//Calculations
+				var fibonacci = [];//Initiating the fibonnacci array and setting some hard variables.
+				fibonacci[0] = 0;
+				fibonacci[1] = 1;
+				fibonacci[2] = 1;
+				for (var i = 3; i < userInputInt + 1 ; i++) {//For loop for easy calculations for the desired number.
+					fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+					//document.getElementById('results').innerHTML += fibonacci[i] + "<br />";
+				}
+				//for( i = 0; i< userInputInt + 1 ; i++){ document.getElementById('results').innerHTML += fibonacci[i] + "<br />"; }
+				creatingTheTable(fibonacci);//Next function
+			}
+		}		
+	}
+		//This function creates the table for the calculated fibonnacci numbers. Creates the table for the appropriate numbers.
+	function creatingTheTable(fibonacci){
+		var table = document.getElementById('myTable');//
+		var row = table.insertRow(0);
+		var celln = row.insertCell(0);
+		var cellf = row.insertCell(1);
+		celln.innerHTML = "n";//Title for the first column.
+		cellf.innerHTML = "Fibonacci(n)";//Title for the second column.
+		for(var j = 1; j < fibonacci.length + 1 ; j++){//Adding calculated numbers to the appropriate cells and rows
+			row = table.insertRow(j);
+			cell1 = row.insertCell(0);
+			cell2 = row.insertCell(1);
+			cell1.innerHTML = j - 1;
+			cell2.innerHTML = fibonacci[j - 1];
+		}
+	}
+	function resetTheTable(){//Resets the page for re-use of the site.
+		reset('myTable');
+	}
+</script>
+</head>
+<body>
+	<!--Putting a title and starting the webpage with a history of fibonnacci sequences with a relevent picture-->
+	<p>The Fibonacci sequence is named after Italian mathematician Leonardo of Pisa, known as Fibonacci. His 1202 book Liber Abaci introduced the sequence to Western European mathematics,although the sequence had been described earlier as Virahanka numbers in Indian mathematics. The sequence described in Liber Abaci began with F1 = 1.
+	Fibonacci numbers appear unexpectedly often in mathematics, so much so that there is an entire journal dedicated to their study, the Fibonacci Quarterly. Applications of Fibonacci numbers include computer algorithms such as the Fibonacci search technique and the Fibonacci heap data structure, and graphs called Fibonacci cubes used for interconnecting parallel and distributed systems. They also appear in biological settings, such as branching in trees, phyllotaxis (the arrangement of leaves on a stem), the fruit sprouts of a pineapple, the flowering of an artichoke, an uncurling fern and the arrangement of a pine cone's bracts.</p>
+
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/PascalTriangleFibanacci.svg/360px-PascalTriangleFibanacci.svg.png">
+	<h3>Fibonnacci numbers are fun!</h3>
+	<!--Creating the form of the page with a text field and 2 buttons for creating the table and resetting the table-->
+	<form>
+		<input id="input" type="text" name="User Input"><br>
+		<button onclick="getUserInputConvertToInt();return false;">Compute!</button>
+		<button onclick="resetTheTable();return false;">Reset Table!</button>
+	</form>
+	<!--Empty div, which doesn't accoplish anything after finishing part 5 of the lab-->
+	<div id="results"></div>
+	<!--Adding some borders and style to the table-->
+	<style>
+		table, td { border: 1px solid black; }
+		table, td { column-width: 100px; }
+		table, tr { text-align: center; }
+		table td:first_child{text-align: left;}
+	</style>
+	<table id="myTable"></table>
+</body>
+</html>
+

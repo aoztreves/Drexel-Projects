@@ -1,0 +1,57 @@
+#!/bin/bash
+#Aslan Oztreves
+#10/13/2016
+
+
+read -p "Do you want to see the script as it executes? (y/[n]) => " debugOn
+if [ "$debugOn" == "y" -o "$debugOn" == "Y" ] ; then
+   set -x      # very useful switch to the set command
+fi
+
+
+ARCHIVE=$(find -iname '\archive')
+#Finding archive
+#numofSD=$(ls -l $ARCHIVE |grep ^d | wc -l)
+
+#looping through all the directories
+for files in $ARCHIVE/*
+   do
+		directoryname=${files##*/}
+		#Getting the just file name
+		counter=0
+		#looping through all the files
+		for f in */$directoryname/*
+			do
+				#Getting just the filename for later
+				tempfilename=${f//_**}
+	   		tempfilename2=$(cut -c 13- <<< "$tempfilename")	
+				#writing to a file so that i can reach it later
+				echo "$tempfilename2" >> aslan.txt			
+	done
+
+done
+#Sorting the files because there might be couple files with the same name
+#That's why using uniq helped me get rid of that repetitiveness
+sort aslan.txt | uniq -cd >> aslan2.txt
+sort aslan.txt | uniq -uc >> aslan2.txt
+sort aslan2.txt >> aslan3.txt
+
+#Getting the filename which has the most threads
+lastline=$(grep "." aslan3.txt | tail -1)
+lastline2=${lastline//* /}
+#Writing the threads from that problem
+find $ARCHIVE/* -iname "*$lastline2*" >> aslan4.txt 
+#Getting number of threads
+tempNum=$(wc -l aslan4.txt)
+num=${tempNum/aslan4.txt/}
+echo "$num"
+find $ARCHIVE/* -iname "*$lastline2*" -print
+
+#Deleting the files after i am done
+rm aslan.txt
+rm aslan2.txt
+rm aslan3.txt
+rm aslan4.txt
+
+
+

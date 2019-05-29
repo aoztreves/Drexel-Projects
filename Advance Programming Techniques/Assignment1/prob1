@@ -1,0 +1,29 @@
+#!/bin/bash
+#Aslan Oztreves
+#10/13/2016
+
+
+read -p "Do you want to see the script as it executes? (y/[n]) => " debugOn
+if [ "$debugOn" == "y" -o "$debugOn" == "Y" ] ; then
+   set -x      # very useful switch to the set command
+fi
+
+#finding the archive file no matter where it is in the directory
+ARCHIVE=$(find -iname '\archive')
+#finding the number of Sub directories
+numofSD=$(ls -l $ARCHIVE |grep ^d | wc -l)
+
+counter=0
+#Looping through all files in the archive directory
+for files in $ARCHIVE/*/* 
+	do 
+		#checking if they are a file or a directory
+		if [ -f "$files" ] ; then				
+		#Increasing the counter for everyfile so that i can get the total
+		#number of files
+			((counter++))
+		fi
+done
+
+echo -n "$numofSD "
+echo "$counter" 

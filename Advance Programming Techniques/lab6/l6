@@ -1,0 +1,58 @@
+Q1 What is the difference between add() and addSuffix?
+- add: add word to suffix deque, update prefix
+- addsuffix adds a new suffix to the hash table.
+Q2 What does lookup do? Which function(s) call lookup?
+-it looks for a prefix and if the argument is 1 then it will create another one.
+-it is called by generate() and add().
+Q3 Include the table in your lab sheet. How many references (pointers) are there to each string:
+
+"It's" 
+"a"
+"new"
+"dawn"
+?
+-3,3,3,2 all same order
+Q4 What are the advantages of this?
+- There is no useless memory usage because there is enough for whats needed.
+Q5 What are the drawbacks?
+- I dont think there is a huge drawback but when you are done with the program you have to release those memory locations for other programs to use it.
+Q6 Write a function to clean up statetab when we're all done, give the memory back (don't spend a lot of time here). In-line your function here, in the lab-sheet.
+
+void cleanup() {
+	for ( int i=0; i< NHASH; i++){
+		State *st=statetab[i];
+		if(st != NULL){
+			free(st);
+		}
+	}
+}
+
+Q7 Does your function work properly? What difficulties did you have?
+- I couldnt implemented right, but logically it should work fine.
+
+Q8 Take a step back from the table. How could you make sure that each string was freed exactly once?
+-Because if we would have tried to free a space twice, since its going to be freed already, its going to return an error.Thus program wont work.
+Q9 How are the prefixes stored? Why not use a vector?
+-typedef deque<string> Prefix;
+we stored them in a deque. Because this way we can pop the first element and add another to the next(end) which is what we want.
+Q10 What serves as our dictionary (replaces our hash table)?
+-
+map<Prefix, vector<string> > statetab;
+So map.
+Q11 How is the satellite data (list of suffices) stored?
+-map<Prefix, vector<string> > statetab;
+so as vectors.
+Q12 Are there any advantages to this implementation over the C implementation? What are they?
+- The most important one should be the easiness that it gives us by the already implemented tables and functions or else we would have to create those.
+Q13 Are there any drawbacks?
+- Yes, i think ours would work slower because of the implementation of unnecessary code that we have to execute to have control over our data.
+Q14 How are the prefixes stored?
+-It uses tuples 
+Q15 What serves as our dictionary (replaces our hash table)?
+- we use key and tok dictionary.
+Q16 How is the satellite data (list of suffices) stored?
+-The data stored in a list.
+Q17 Are there any advantages to this implementation over the C++ implementation? What are they?
+-i dont think there is a huge advantage other than writing python will take less time because of the length of the code.
+Q18 Are there any drawbacks?
+-C++ has more implemented code in it than python for working with pointers and lists like these.

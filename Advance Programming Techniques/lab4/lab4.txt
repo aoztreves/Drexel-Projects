@@ -1,0 +1,108 @@
+1.1 
+- variables in that code is wrong because true is always equal to 0 anyway.
+1.2
+-I think i would change the names of the variables like one and two or first and second because then it would make it easier to follow.
+
+1.3 -I couldn't read it properly, the variable names was weird
+1.4 
+1)if ( c != 'y' || c!= 'Y' )
+return
+
+2)if ( length > BUFSIZE ) {
+	length=BUFSIZE
+}
+
+3)(flag != flag)
+
+4)if (*line == '"') {
+	quote=1
+}
+else {
+	quote=0
+}
+
+5)if ( val == 1) {
+	bit = 1
+}
+else {
+	bit = 0
+	}
+1.5
+- I think the problem with that question is the order of calling function
+1.6 
+- I think this would be the output 2, 1, 2
+1.7 
+-
+if (istty(stdin)) ;
+
+else if (istty(stdout)) {
+	else if (istty(stderr)) ;
+}
+else { 
+	return(0) ;
+}
+-
+if (retval != SUCCESS){
+
+	return (retval);
+}
+
+return SUCCESS;
+-
+for (k = 0; k++ < 5; x += dx){
+	scanf ("%l f" , &dx) ;
+}
+
+1.8
+- 
+int count = 0;
+
+while (count < total) {
+	count++;
+
+if (this. getName(count) == nametable. userName()) {
+	return (true) ;
+};
+
+1.9
+-#define ISDIGIT(c) (((c>='O') && (c='9'))) ? 1 : 0
+I think i fixed the problem by adding parenthesis.
+
+1.10
+- I would use them with each other because it will reduce the error because of the roundups or i would just use float numbers incase.
+
+FT2METEr   0.3048
+METER2FT   (1.0 / FT2METER)
+MI2FT      5280.0
+MI2KM      (MI2FT * FT2METER * 1000.0)
+SQMI2SQKM  (MI2KM * MI2KM)
+
+1.11
+
+void dict: :insert(string& w)
+
+// returns 1 if w in dictionary, otherwise returns 0 // shouldnt return anything because its a void function.
+
+if (n > MAX I I n % 2 > 0) // test for even number // i think its for odd numbers not even
+
+// Write a message // isnt useful
+
+// Add to line counter for each line written 
+
+void write-message()
+
+// increment line counter // its kinda obvious
+
+line-number = line-number + 1;
+
+fprintf(fout, "%d %s\n%d %s\n%d %s\n",
+
+line-number, HEADER,
+
+line-number + 1, BODY,
+
+line-number + 2, TRAILER);
+
+// increment line counter // again its unnecessary
+
+1 line-number = 1 line-number + 2;

@@ -1,0 +1,3 @@
+ReadME FIle for Lab2 - Aslan Oztreves
+
+This website is for people who have a key for the http://api.wunderground.com/ site. From that key when the user presses the button, then we find his/her zipcode from the provided key and calculate the 24 hour weather for that zipcode.

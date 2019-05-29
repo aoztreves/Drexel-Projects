@@ -1,0 +1,14 @@
+Q 1What happened when you ran bug3? Use ls -ot, see if there are any new files in your directory.
+- Gave a string "aslan" and got this error "segmentation fault (core dumped)".-rw------- 1 ao428 393216 Nov 18 16:29 core. core was created.
+Q 2 In which function did it bomb?
+-It bombed in main() or inTable() function but i think main().
+Q 3 For each, below, record what the problem was, and you how fixed it.
+-it couldnt compile because expected argument was int type so i fixed it by just passing n as an reference to scanf() function.
+-there is an error in printf() function and i fixed it by changing %d because it was suppose to be an integer and %f because it excepts double type
+-there was a problem with the numlines i fixed it by increasing the variable after the assignment.
+-there was a problem with scanf() function we need to change %d becuause it is expecting an integer.
+-we can check if there is a problem with the pivot location, if its changed or not.
+Q 4 Why can't the compiler catch this? You can uncover the problem by looking at a stack trace from when the program crashed (see the lab on how to do this).
+- Compilers can only catch basic staff like syntax errors or if the compiler is good, then it might catch like endless loops.
+Q 5 What happens if you are using qsort to sort integers and accidently pass the string comparison function?
+-there would be an error, if they are type spesific then compiler might catch this or it will probably be an run time error.

@@ -1,0 +1,223 @@
+#!/usr/bin/python
+#Name :
+	#Aslan Oztreves
+#Date :
+	#30/11/2016
+# Purpose :
+	#This code will show the information , transaction history, make
+	#transactions like withdrawal and deposit as well as creating a new account
+	#for a person.
+#Platform :
+	#Python 2.7.12 (default, Nov 19 2016, 06:48:10) 
+	#[GCC 5.4.0 20160609] on linux2
+	
+
+from random import randint
+import sys
+import re
+import time
+import os
+
+#Creating the environmant for file
+filen = os.environ['ACCT_LIST']
+dict = { }
+newdict = { }
+balancedict = { }
+doublenewdict = { }
+#Reading the file 
+readFile = file( filen ,"r")
+line = readFile.readline()
+while line :#Converting lines to dictionary with account number as key
+	accountN, name , date , action , amount = line.split(":")
+	dict[ accountN ] = accountN, name , date , action , amount
+	line = readFile.readline()
+#This function is for showing information about accounts
+def info(dict):
+	counter = 1 	
+	readFile = file( filen ,"r")
+	line = readFile.readline()
+	print " INFO "
+	print " ---- "
+	#This loop will assign numbers to the dictionary with information
+	for x in sorted(dict):
+		newdict[counter] = dict[x]
+		print counter , ")",dict[x][1],x
+		counter = counter + 1
+	print "q)uit"
+	inputuser = raw_input("Enter choice => ")#getting user input
+	if inputuser == "q":
+		sys.exit()
+	#Printing out information about the choosen account
+	print "account #: ", newdict[int(inputuser)][0]
+	print "name: " ,newdict[int(inputuser)][1]
+	calbalance(int(inputuser))		#Calculate balance for the choosen account
+	print "balance: $",doublenewdict[int(inputuser)]
+	info(dict)
+#This function is for calculating balance for accounts
+def calbalance(inputuser):
+	balancedict.clear()
+	doublenewdict.clear()
+	readFile = file( filen ,"r")
+	line2 = readFile.readline()	
+	counter = 1
+	while line2 :
+		balance = 0
+		accountN, name , date , action , amount = line2.split(":")
+		if accountN in balancedict.keys(): # Updating balance for the apropiate account
+			if action == "W" :
+				balancedict[accountN] = balancedict[accountN] - int(float(amount))
+			else :
+				balancedict[accountN] = balancedict[accountN] + int(float(amount))
+		else : # Create balance for the initial log
+			if action == "W" :
+				#print "There is a problem with the log, you cant withdraw without an account"
+				balance = balance - int(float(amount))
+			else :
+				balance = balance + int(float(amount))
+			balancedict[ accountN ] = balance
+		line2 = readFile.readline()
+	for x in sorted(balancedict):#Putting balance to the right account
+		doublenewdict[counter] = balancedict[x]
+		counter = counter + 1
+	
+#This function is for showing the transaction history for a choosen account
+def history(dict):
+	print " History "
+	print "---------"
+	counter = 1
+	for x in sorted(dict):#This loop will assign numbers to the dictionary with information
+		newdict[counter] = dict[x]
+		print counter , ")",dict[x][1],x
+		counter = counter + 1
+	print "q)uit"
+	inputuser = raw_input("Enter choice => ")#Getting user input
+	if inputuser == "q":
+		sys.exit()
+	readFile = file(filen ,"r")
+	line3 = readFile.readline()
+	while line3 :#Printing account history one line at a time
+		accountN, name , date , action , amount = line3.split(":")
+		if int(inputuser) in newdict.keys():#Choosing the right account to print
+			if  newdict[int(inputuser)][0] == accountN:
+				if action == "W":#Easy naming
+					wordofa = "withdrawal"
+				else:
+					wordofa = "deposit"
+				print "   " , date , wordofa ,"$", amount
+		line3 = readFile.readline()
+	history(dict)	
+#This function is for transactions and creating an account 
+def transaction(dict):
+	print " Transaction "
+	print "-------------"
+	readFile = file( filen ,"r")
+	line = readFile.readline()	
+	while line :#Converting lines to dictionary with account number as key
+		accountN, name , date , action , amount = line.split(":")
+		dict[ accountN ] = accountN, name , date , action , amount
+		line = readFile.readline()
+	counter = 1
+	for x in sorted(dict):#This loop will assign numbers to the dictionary with information
+		newdict[counter] = dict[x]
+		print counter, ")", dict[x][1],x
+		counter = counter + 1
+	print counter,")", "Add a New Account"
+	print "q)uit"
+	print "Please enter W or D for choice for withdrawal or deposit"
+	inputuser = raw_input("Enter choice => ")#Getting user input
+	if inputuser == "q":
+		sys.exit()
+	if inputuser == str(counter):#For creating a new account
+		inputan = randint(1000,9999)#Create a random number for account number
+		if inputan in dict.keys():
+			print "This # has already been taken"
+			print "Please start over"
+			transaction(dict)
+		#Getting the input from the user about the account
+		inputname = raw_input("Please write your name => ")
+		inputaction = raw_input("Please choose deposit/withdraw cash(W/D) => ")
+		if inputaction == "d" or inputaction == "D":
+			inputaction = "D"
+		elif inputaction == "W" or inputaction == "w":
+			inputaction = "W"
+		else:
+			print "Incorrect. Start Over"
+			transcation(dict)
+		inputamount = raw_input("Please enter the amount for deposit => ")
+		#Opening the file and writing the new log to tht fale
+		f = open(filen,'a')
+		f.write(str(inputan) + ":" + inputname + ":" + time.strftime("%y.%m.%d") + ":"+ inputaction + ":" + inputamount + '\n' )
+		f.close()
+		print "You have succesfully created your account"	
+	if inputuser == "d" or inputuser == "D" :#if they want to deposit
+		counter = 1
+		for x in sorted(dict):#Chosing the account for deposit
+			newdict[counter] = dict[x]
+			print counter, ")", dict[x][1],x
+			counter = counter + 1
+		inputchoice = raw_input("Please select the account you want to use it for trasaction => ")
+		inputdepo = raw_input("Please enter the amount you like to deposit => ")
+		#Getting input and writing it to the log file
+		f = open( filen,'a')
+		f.write(newdict[int(inputchoice)][0] + ":" + \
+newdict[int(inputchoice)][1] + ":" + time.strftime("%y.%m.%d") + ":" + "D" \
++ ":" + inputdepo + '\n')
+		f.close()
+		print "Transaction complete"
+	if inputuser == "W" or inputuser == "w" :#if they want to withdraw
+		counter = 1
+		for x in sorted(dict):#Chosing the account for withdraw
+			newdict[counter] = dict[x]
+			print counter, ")", dict[x][1],x
+			counter = counter + 1
+		inputchoice = raw_input("Please select the account you want to use it for trasaction => ")
+		inputwith = raw_input("Please enter the amount you like to withdraw => ")	
+		#Calculating the balance for the account
+		calbalance(inputchoice)
+		with_amount = doublenewdict[int(inputchoice)] - int(inputwith)
+		if with_amount < 0 :#if the account has less money than the wanted withdraw money then won't allow transaction"
+			print "You don't have that much money. Please start over."
+			transaction(dict)
+		f = open(filen,'a')
+		f.write(newdict[int(inputchoice)][0] + ":" + \
+newdict[int(inputchoice)][1] + ":" + time.strftime("%y.%m.%d") + ":" \
++ "W" + ":" + inputwith + '\n')
+		f.close()
+		print "Transaction complete"
+
+	transaction(dict)
+	
+#Main function for calling functions accordingly
+def main():
+	argument = sys.argv[1]#Taking arguments
+	if(len(argument) > 2 ):
+		print "Please only input 1 argument"
+		sys.exit()
+	if(argument == "-i"):#Calling info function if the argument is -i
+		info(dict)
+	elif(argument == "-h"):#Calling history function if the argument is -h
+		history(dict)
+	elif(argument == "-t"):#Calling transaction function if the argument is -t
+		transaction(dict)
+	else:
+		print "Not a valid input please try again."
+		sys.exit()
+if __name__ == "__main__":
+	main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

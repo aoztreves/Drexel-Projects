@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!--
+	Aslan Oztreves
+-->
+
+<project>
+	<path id="project.class.path">
+		<pathelement path='${classpath}'/>
+		<pathelement location='/usr/share/java/junit.jar'/>
+		<pathelement location='.'/>
+	</path>
+	
+	<target name='run' depends='compile'>
+		<java classname='gInt'>
+			<classpath refid="project.class.path"/>	
+		</java>
+	</target>
+	<target name='compile' depends='gInt'/>
+	
+	<target name='gInt'>
+		<javac srcdir='.' includes='gInt.java' includeantruntime='false'/>
+	</target>
+
+	<target name='gIntTest'>
+		<javac srcdir='./' includes='gIntTest.java' includeantruntime='false'>
+			<classpath refid="project.class.path"/>
+		</javac>
+	</target>
+	
+	<target name='test' depends='compile,gIntTest'>
+		<junit>
+			<classpath refid="project.class.path"/>
+			<formatter type='plain'/>
+			<test name='gIntTest'/>
+		</junit>
+	</target>
+	<target name='clean'>	
+		<delete>
+			<fileset dir='./'>
+				<include name='*.class'/>
+			</fileset>
+		</delete>
+	</target>
+
+</project>

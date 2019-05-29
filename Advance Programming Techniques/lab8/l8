@@ -1,0 +1,15 @@
+Q 1 Describe what is meant by each of the following:
+-	We need to hide the implementation from the user so that they cant change it as well as if we have to change it, it wont effect the user.
+-	its functions that doesnt effect one another that gets one thing done.
+-	Interface has to do what the user asks for, nothing more nothing less.
+-	We have to implement every thing with the same way, we need to keep consistency through out the code, and everything.
+Q 2 What are the problems w/the first implementation in C (Labs/Interfaces/csvgetline1.c)?
+-	Commas inside the quotes is not seperated by \ and empty fields are not handled correctly i think.
+Q 3 What things were improved upon in the first revision in C?
+-	Fixed the quotes with the commas as well as the quotes inside.
+Q 4 What problems does the first revision (Labs/Interfaces/csvgetline2.c) still have? Can you parse 2 different CSV files at the same time? Explain.
+-	I think we still miss the empty spaces, and then we still cant handle 2 files because of the file names.
+Q 5 Does the C++ implementation solve these problems? What issues still remain?
+-	No,its not solved yet. I think its still the empty spaces that are not handled.
+Q 6 Does the interface for the C++ implementation adhere to our guidelines for a good i/f, from lecture?
+-	Yes.

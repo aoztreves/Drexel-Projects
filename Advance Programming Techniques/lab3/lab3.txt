@@ -1,0 +1,46 @@
+I am going to use grep.
+
+Q 1: match all lines that contain the string the
+-egrep 'the' bright_side_of_life 
+Q 2: match all lines that contain the word the (not as a substring of a larger word)
+-egrep '\<the\>' bright_side_of_life
+Q 3: match all lines that contain the word Just
+egrep '\<Just\>' bright_side_of_life 
+Q 4: match all lines that contain Just or just
+-egrep '\<[jJ]ust\>' bright_side_of_life
+Q 5: match all lines that start w/the word Just or just
+-egrep '^\<[jJ]ust\>' bright_side_of_life
+Q 6: match all lines that contain the word bad or mad
+-egrep '\<[bm]ad\>' bright_side_of_life 
+Q 7: match all lines that contain the word death or breath
+-egrep '\<(d|br)eath\>' bright_side_of_life 
+Q 8: match all lines that end with you. Trailing puncuation is acceptable (so, possibly followed by a period or a comma)
+-egrep 'you[,.]*$' bright_side_of_life 
+Q 9: match lines that have leading whitespace?
+-egrep '^\s' bright_side_of_life
+Q 10: match lines are empty?
+-egrep '^$' bright_side_of_life 
+Q 11: How many are there?
+These are the lines that match so it's 10.
+ao428@tux5 lab3> egrep -n '^$' bright_side_of_life 
+3:
+7:
+14:
+17:
+24:
+27:
+33:
+36:
+43:
+55:
+
+Lab - git
+Q 1: What command did you use to recover your answers after you deleted them?
+- First I used git log to get the uuid then  i used git checkout “uuid number” regexp.txt then I got my file back.
+For this question the uuid number was 7a30bbb01381a9ed9f6c01af383e3411fa653f52
+
+Q 2: How will we be able to tell if you cheated and never deleted your answers in the first place?
+- Because every commit has their own uuid and after you commit they are there with their uuid number its called garbage collects. we can get those commit back if we want but since we dont want the mistake commit back. i dont think we are going to deal with it at all. But you can go to my “Deleted everything” commit and see that file is empthy
+
+
+At first I used git reset method but then I realized that it is not the way if I want to make sure you guys see my deleted file so I used checkout rather than reset method.That is why there might be 2 pushes rather than just one. Thank you for understanding.

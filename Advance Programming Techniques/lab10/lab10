@@ -1,0 +1,16 @@
+Q 1 Supply your chart (that is just tabular data, n, T(n), T(n)/f(n) for various choices of f(n)), not a graph, and your conclusions
+-	Chart1 submitted in excel file, called chart1.xlsx
+-	T(n) is increasing to infinity but there is a bound below but not tightly.
+-	T(n) = w(1) 
+- 	f(n) = n is increasing to infinity thus bounding the T(n) below by a line, not tightly.In other words, T(n) grows faster than a line.
+-	f(n) = n^2: T(n) / n^2 is tending towards some non-zero constant.So, T(n) is Θ( n2 ).
+-	f(n) = n^3, and we see that T(n)/n3 is probably decreasing to zero. This shows that n^3 is an upper bound, but not tight. 
+I.e., T(n) grows more slowly than n^3. T(n) is ο( n^3 ).
+Q 2 Supply your chart (just the tabular data, no graphs), and your conclusions
+-	Chart2 submitted in excel file, called chart2.xlsx
+* # swap means the number of calls.
+-	# swap() was increasing so there should be a bound below but not tightly.# swap() = w(1)
+-	f(n) = n is increasing to infinity thus bounding # swap() by below bound by a line, but not tightly. # swap() grows faster than a line.
+-	f(n) = n^2 this tends towards some non-zero constant. Therefore # swap() = (theta)(n^2)
+-	f(n) = n^3 this is decreasing to zero probably. which shows that n^3 is an upper bound but obviously not tight.
+I.e., # swap() Calls grows more slowly than n^3. # swap() Calls = ο( n^3 ).

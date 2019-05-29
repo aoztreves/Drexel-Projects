@@ -1,0 +1,40 @@
+README
+
+All functions are working perfectly. ao428_h is looking to 2 things, how close the location of the next icon as well as if they are adjacent.
+
+-Your program should adhere to the following conventions:
+-Your program should be able to make either the first or second move. 
+	It does let you do it, it chooses it randomly.
+-Your program should be able to be either the player with X or O tokens.
+	It does this.
+-Note that by allowing each player to be either human or a computer, this permits your program to do testing with both players as human, or with both players as computer, which should be helpful for you while developing and evaluating your heuristic.
+
+I left the code as first player being chosen randomly and since i didnt want to keep inputting moves, i created a function to chose a random move from the possible moves.
+
+To create a table and see if my search is working right the first move is being made by the computer and then random but for the game i changed that back to normal.
+
+Extra Credit
+
+-Your program should employ alpha-beta pruning. You should collect data on number of states evaluated with and without pruning, amount of time used, and depth achieved. Summarize your results in a table.
+
+I tried both of them 10 times just to get an average.
+
+With alpha-beta pruning:
+
+Average number of states : 14.1
+Average time for 10 runs in seconds: 57.97568933963775
+Computer : 10
+Random : 0
+depth : 4
+
+Without:
+
+Average number of states : 17.3
+Average time for 10 runs in seconds: 68.214124589391231
+Computer : 10
+Random : 0
+depth : 4
+
+depth is picked by the user given that it was prompted in the given sample game play, so i did the same.
+
+Aslan Oztreves

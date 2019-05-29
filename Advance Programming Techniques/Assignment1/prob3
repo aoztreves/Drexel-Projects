@@ -1,0 +1,34 @@
+#!/bin/bash
+#Aslan Oztreves
+#10/13/2016
+
+
+read -p "Do you want to see the script as it executes? (y/[n]) => " debugOn
+if [ "$debugOn" == "y" -o "$debugOn" == "Y" ] ; then
+   set -x      # very useful switch to the set command
+fi
+#Getting the variables for the inputs
+year=$1
+month=$2
+day=$3
+
+ARCHIVE=$(find -iname '\archive')
+counter=0
+#Looping through files
+for files in $ARCHIVE/*/*
+   do
+      if [ -f "$files" ] ; then
+			#Getting the file's timestamp to check if they match with the input 
+			timeStamp=$(sed -n '5'p $files)
+
+			line=$(cut -c-21 <<< "$timeStamp")
+			date=${line//TimeStamp: /}
+			
+      fi
+		#if threads date matches the input date
+		if [ $date = $2"/"$3"/"$1 ] ; then
+			threadName=$(cut -c 15- <<< "$files")
+			echo "$threadName"
+		fi
+done
+                                  

@@ -1,0 +1,20 @@
+README FILE FOR PA2 For ASLAN OZTREVES
+
+Every Implementation done, works.
+Testing is included in Programs file, please see for more. Every test has been passed by my code.
+Timing is also included in Programs file, please see for more. Timing of every implementation
+	1)LOCTREE
+	2)LCRSTREE
+are all included in PDF file.
+I have included the pictures i used to derive my conclusion, you can find those pictures in Pictures folder.
+
+
+
+
+My main function includes all the testing and the timing operations.All of them are linked together.
+For makefile, first you need to call the makefile by make in order to create executables, then the program basicly runs the program by "./build" because thats is going to be the executable file by itself.
+For testing purposes I included all of the test of those file within the “testing” file but make fill execute every test and what file is needed.
+You don’t have to call make clean or anything because it is being done in one segment
+Every file is inlcuded in the main so it will call in that order.
+
+Thanks for your time.

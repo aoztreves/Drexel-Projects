@@ -1,0 +1,28 @@
+#!/bin/bash
+#Aslan Oztreves
+#10/01/2016
+
+read -p "Do you want to see the script as it executes? (y/[n]) => " debugOn
+if [ "$debugOn" == "y" -o "$debugOn" == "Y" ] ; then
+   set -x      # very useful switch to the set command
+fi
+
+fileDirectory="$PWD"
+#input=$1
+
+for filename in * ; do
+	
+	artist=$(echo $filename | cut -f 1 -d "-")	
+	songName=$(echo $filename | cut -d "-" -f 2)
+		
+   mv $filename $songName
+	if [ -f "$songName" ] ; then
+     	 echo "passes"
+		 mkdir $artist
+		 mv $filename $songName
+
+		 mv $songName $artist
+	fi
+
+done
+

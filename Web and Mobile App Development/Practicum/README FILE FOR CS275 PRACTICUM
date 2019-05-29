@@ -1,0 +1,12 @@
+README FILE FOR CS275 PRACTICUM
+
+PART1
+	This part the user only has to choose the route number from the dropdown menu and press the button.
+	Then the program will get the information from the site and print it as a table with route, vehicle id, block id, direction and destination, in that order.
+PART2
+	For this part, user has to initiate the server which is node.js file, then user easily go to localhost:8080 and see the index.html I created for convenience and choose a message and number of times to print that message, then press the button to see the result. If user wants to jusdt use the URL then user can easily plug in the number and the message in to the following places which i mark with an 'X'.
+	URL to be used = 
+		http://localhost:8080/part2?message=X&count=X
+
+Thank you!
+Aslan Oztreves

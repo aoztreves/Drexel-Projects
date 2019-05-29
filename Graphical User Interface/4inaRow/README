@@ -1,0 +1,11 @@
+README
+
+I used eclipse NEON and in order to work the project you have to add the "res" folder into the build path, basically making it the source file.
+
+The main class is for console playing, for UI please run GUI class.
+
+You can use 1-7 keys to put a piece on to the board.
+
+The menu on top is used for changing the preference, it can be used to change the color of the tokens as well as the diffulty of the AI by increasing the maxDepth.
+
+Aslan Oztreves

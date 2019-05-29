@@ -1,0 +1,27 @@
+README FOR CS275 LAB5
+
+This lab requires the node.js use thats why we have to iniate the server and from our terminal and then go to localhost:8080 for the index html.
+Then using the dropdown menu we choose what kind of table we want to see, which those tables are connected to mysql database.
+I created the database by using these commands;
+1)CREATE TABLE STUDENT (
+    id varchar(255) NOT NULL UNIQUE,
+    firstname varchar(255),
+    lastname varchar(255) NOT NULL,
+    dob DATETIME NOT NULL,
+    major varchar(255),
+    PRIMARY KEY (id)
+); 
+2)CREATE TABLE COURSE (
+    id varchar(255) NOT NULL UNIQUE,
+    description varchar(255) NOT NULL
+); 
+3)CREATE TABLE GRADES (
+    courseid varchar(255) NOT NULL,
+    studentid varchar(255) NOT NULL,
+    term varchar(255) NOT NULL,
+    grade varchar(1) NOT NULL
+); 
+
+There is a attached image in the same folder which shows the table context, if needed please check that picture.
+
+Aslan Oztreves

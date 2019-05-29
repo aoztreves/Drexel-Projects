@@ -1,0 +1,47 @@
+Q 1: What is the output?
+- I got this output. "./.bash_history"
+Q 2: What would the find command be to find all files that end in .bash?
+- This will be the command. " find -name "*.bash""
+Q 3: What is the output?
+- This was the result. "./gotMe.bash"
+Q 4: What were the results?
+- Lines - 97 breadIsDangerous.txt
+- Characters - 2960 breadIsDangerous.txt
+- Words - 499 breadIsDangerous.txt
+Q 5: How could you use grep, wc (with the -l option), and a pipe to find how many lines contain the string "the"?
+- grep "the" breadIsDangerous.txt | wc -l . That is what I used and the answer I got is 8.
+Q 6: What is different?
+- I went to a gadren party
+This line is fine
+bnuch of my old freinds did somehting
+
+As is this one
+ This was the text before after I executed the file now its this.
+ I went to a garden party
+This line is fine
+bunch of my old friends did something
+
+As is this one
+The program changed gadren to garden,bnuch to bunch and freinds to friends and finally somehting to something.
+Q 7: Explain the output?
+- 1c1
+< I went to a garden party
+---
+> I went to a gadren party
+3c3
+< bunch of my old friends did something
+---
+> bnuch of my old freinds did somehting
+6d5
+< An extra line
+ This is the output that i got before I changed everything with ispell. the only difference is the "an extra line".
+ Q 8: What did you see this time?
+ - There was nothing came out because there is obviously no difference between the same files.
+Q 9: Explain the different return values (the man pages might help)
+I got three different returns, 0,1 and 2. 0 means that grep dough breadIsDangerous.txt worked perfectly but the others didnt because we know that in unix 0 means true and everything else means not true.
+Q 10: Upload count.bash
+-Done
+Q 11: Call this script reextend, and upload it w/your lab. 
+-Done
+Q 12: Call this script organiseMusic, and upload it w/your lab.
+-Done

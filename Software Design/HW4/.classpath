@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/Client.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/cmu_time_awb.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/cmu_us_kal.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/cmudict04.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/cmulex.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/cmutimelex.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/EmacspeakServer.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/en_us.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/freetts-jsapi10.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/freetts.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/FreeTTSEmacspeakServer.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/FreeTTSHelloWorld.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/HelloWorld.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/jsapi.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/JTime.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/MixedVoices.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/Player.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/Server.jar"/>
+	<classpathentry kind="lib" path="/Users/aslanoztreves/Desktop/libs/WebStartClock.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

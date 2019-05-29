@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Practicum 2</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function myFunction(){
+			var inputnumber= document.getElementById("inputnumber").value;
+			var inputstring = document.getElementById("inputstring").value;
+			var extension = "/"
+			if(inputstring.length>0){
+				extension="/part2";
+			}
+			var URL = "http://localhost:8080"+ extension;//Creating the right URL
+			var exampleJSON = {
+				message: inputstring,
+				count: inputnumber,
+			};
+			$.ajax({//Json for ajax
+				type:"GET",
+				url:URL,
+				datatype:"html",
+				data:exampleJSON,
+				success:function(msg){
+					document.getElementById("content").innerHTML = msg;//printing in div if its success
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<input id="inputstring" type="text">
+		<input id="inputnumber" type="text">
+		<button id="button1" onclick="myFunction();return false;">Action</button>
+	</form>
+	<div id="content"></div>
+</body>
+</html>

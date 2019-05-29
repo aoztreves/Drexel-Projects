@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab5</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+	</script>
+	<script type="text/javascript">
+	function createTable(){
+		var studentChoice=document.getElementById("student").value;
+		var termChoice=document.getElementById("term").value;
+		var exampleJson ={
+			student:studentChoice,
+			term:termChoice,
+		}
+		var URL ="http://localhost:8080/student";
+		$.ajax({
+			type:"GET",
+			url:URL,
+			dataType:"html",
+			data:exampleJson,
+			success:function(msg){
+				document.getElementById("div1").innerHTML = msg;
+			}
+		});
+	}
+	function createTable2(){
+		var tableChoice=document.getElementById("table").value;
+		
+		var exampleJson ={
+			table:tableChoice,
+		}
+		var URL ="http://localhost:8080/table/";
+		$.ajax({
+			type:"GET",
+			url:URL,
+			dataType:"html",
+			data:exampleJson,
+			success:function(msg){
+				document.getElementById("div2").innerHTML = msg;
+			}
+		});
+	}
+	</script>
+</head>
+<body>
+	<form>
+		<h2>Please choose Student and a Term</h2>
+		<select id="student">
+			<h4>Student : </h4></br>
+			<option value="ao428">Aslan Oztreves</option>
+			<option value="rb123">Robin Kearney</option>
+			<option value="bl432">Brendan Luu</option>
+		</select>
+		<select id="term"><!--dropdown menu -->
+			<h4>Term : </h4></br>
+			<option value="Fall16">Fall16</option>
+			<option value="Winter17">Winter17</option>
+			<option value="Spring17">Spring17</option>
+			<option value="Summer17">Summer17</option>
+			<option value="Fall17">Fall17</option>
+		</select>
+		<button id="button1" onclick="createTable();return false;">Create</button>
+		</br>
+		</br>
+		<select id="table">
+			<h4>Table : </h4></br>
+			<option value="student">Students</option>
+  			<option value="course">Courses</option>
+  			<option value="grades">Grades</option>
+		</select>
+		<button id="button1" onclick="createTable2();return false;">Create</button>
+		</br>
+		<div id="div1"></div>
+		<div id="div2"></div>
+	</form>
+	<style>
+		table, td { border: 1px solid black; }
+		table, td { column-width: 100px; }
+		table, tr { text-align: center; }
+		table td:first_child{text-align: left;}
+	</style>
+</body>
+</html>

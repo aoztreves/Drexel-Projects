@@ -1,0 +1,19 @@
+
+
+Aslan Oztreves
+HW3
+Machine Learning
+Matthew Burlick
+
+
+README
+
+Part1)You can find the theory in the HW3.pdf.
+Part2)All the figures and screenshots are in the HW3.pdf, you can find the screenshots used in the screenshots folder. Everything should be working fine.
+Part3)Everything should be working fine.
+Part4)I feel like my calculations are right but I wasn't able to store all the values then get the mean. TIme run out.
+
+Naming;
+HW3_21 and HW3_22 for Gradient Descent part of the homework.
+HW3_3 is for closed linear regression
+HW3_4 is for SFolds

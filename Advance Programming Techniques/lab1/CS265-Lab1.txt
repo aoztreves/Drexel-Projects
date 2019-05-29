@@ -1,0 +1,106 @@
+Q1: Describe when the shell invokes .bashrc, and when it invokes .bash_profile.
+-I think bashrc is for the default options as well as what you can save to opening bash, the shell but profile is where it reads its commands.
+Q2:Complete all edits in this file, as directed by the file, save as vi_lab, and submit along w/your lab.
+-Done.
+Q3: Do an ls -l . What do you see?
+-I see these:
+total 80
+-rw-rw-r--  1 ao428 ao428   166 Sep 24 19:15 hello.cc
+drwxrwxr-x  2 ao428 ao428     6 Sep 24 20:08 lab1
+-rw-rw-r--  1 ao428 ao428 33136 Sep 25 15:11 Test
+-rw-rw-r--  1 ao428 ao428   515 Sep 25 15:15 TEST
+-rw-rw-r--+ 1 ao428 ao428 33720 Sep 25 15:55 vi_lab
+Q4: If you enter chmod 644 some_file , what permissions did you give to whom?
+-it is read and write for the user,just read for the group and the world.
+Q5: If you enter chmod 755 some_file , what permissions did you give to whom?
+- it is read, write and execute for me(user) and read and execute for groups and world.
+Q6: Can you read your funny file?
+-Yes, for now I can read the file.
+Q7: Can you read your hello.bash file?
+-Yes, for now I can read the file.
+Q8: Were you successful?
+-Yes, it worked.
+Q9: What are 2 ways of giving yourself execute permission on this file?
+-I would say anything that starts with chmod 7** and also anything starts with chmod 3** or for extra I can start with chmod 1**.
+Q10: What happened?
+-It is giving me an error I think i only have the permission for read and not the others so I have to change my permission then try to change it I guess.
+-I had to override it with the :w! command.
+Q11: What is the output of each of these?
+-ls * - it list everything inside of the current repository as well as the whatever the folder holds
+-ls a* - This only showed annoy and annoy.cc . I think it only shows the files with initial letter a.
+-ls *m* -This showed itemList  itemList-2cols  TelecomTruths these. I think it shows the files which contains the letter m.
+-ls anno? - it only showed annoy.
+-ls annoy? - it said there is no file or repository. I think this one shows the file if you are missing by just one letter, if not it doesnt show anything.
+Q12: What happened?
+-It created 3 different files with names ; 1)vi 2)a 3)space not single file with "vi a space" name.
+Q13: Record the output:
+- echo Is a < b? - nothing because there are no quotes.
+- echo "Is a < b?" - the out put is Is a < b
+- echo "\$USER is $USER" - the output is $USER is ao428.
+- echo '\$USER is $USER' - the output is \$USER is $USER.
+- echo "Today is `date`" - the output is Today is Sun Sep 25 17:18:56 EDT 2016
+- echo "Today is $(date)" - the output is Today is Sun Sep 25 17:19:36 EDT 2016
+- echo 'Today is `date`' - the output is Today is `date`
+- echo -e "Files that start w/e:\n`ls e*`" - the output is 
+ls: cannot access 'e*': No such file or directory
+Files that start w/e: 
+I didnt understand why this was returned.
+Q14: What is the difference between sort itemList-2cols and sort -n itemList-2cols?
+- The difference between both of them is that the first one is randomly orders the lists the latter one list the items in a numberly order.
+Q15: How would you list the 8 items in itemList-2cols w/the highest numbers, in descending order?
+-After a lot of tries, I found out that pipe can be behind the command thats why I was getting that weird situation where i couldn't put any commands in. I found the solution by trial and error which is sort -rn itemList-2cols | head -n8 .
+Q16: The tar file is gone. What is in its place?
+-There is a new file in it's place which is lab1.tar.gz.
+Q17: What happened to the *.tgz file?
+- It was a .tgz file then after our slick moves it turned into a tar file back again.
+Q18: Show the grep used to find if any files in this lab directory mention "Vacation".
+-grep -R 'Vacation' ./ is the command I used to find the Vacation string which is in this file ./TelecomTruths: and in this sentence "Vacation" is something you roll over to next year, or a check you get.
+Q19: Put the find command you used above here in your labsheet.
+- I got this results which I think proves that it finds lab1 
+
+find -P "lab1" ./
+
+./
+./.forward
+./.bash_logout
+./.bash_profile
+./.bashrc
+./.btmail
+./.btmail/bogofilter
+./.btmail/bogofilter/bogofilter.cf
+./.btmail/bogofilter/wordlist.db
+./.btmail/bt.ini
+./.cshrc
+./.login
+./.logout
+./.procmailrc
+./.cache
+./.cache/motd.legal-displayed
+./.vimrc
+./.bash_history
+./CS265
+./CS265/lab1
+./CS265/lab1/hello.bash
+./CS265/lab1/funny
+./CS265/lab1/TEST
+./CS265/lab1/vi_lab
+./CS265/lab1/Test
+./CS265/.swp
+./CS265/lab1.2.tgz
+./CS265/lab1.tar
+./CS265/annoy
+./CS265/annoy.cc
+./CS265/hello.cc
+./CS265/itemList
+./CS265/itemList-2cols
+./CS265/TelecomTruths
+./CS265/UnitTestingPhase
+./.nano
+./.swp
+./public_html
+./public_html/index.html
+./.index.html
+./.lesshst
+./.viminfo
+./.ssh
+./local

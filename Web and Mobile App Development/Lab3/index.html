@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 3</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function myFunction(){
+			var input = document.getElementById("input").value;//Getting user input
+			var dropDown = document.getElementById("dropdown").value;//Getting user choice
+			var URL = "http://localhost:8080/" + dropDown;//Creating the right URL
+			var exampleJSON = {
+				answer: input//Starting json with just the user answer to read off later with node
+			};
+			$.ajax({//Json for ajax
+				type:"GET",
+				url:URL,
+				datatype:"html",
+				data:exampleJSON,
+				success:function(msg){
+					document.getElementById("div1").innerHTML = msg;//printing in div if its success
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<h2>Please input your seed number</h2>
+		<input id="input" type="text"></br>
+		<select id="dropdown"><!--dropdown menu -->
+			<option value="sum">Summation</option>
+			<option value="fact">Factorial</option>
+		</select>
+		<button id="button1" onclick="myFunction();return false;">Action</button><!--button for the function -->
+	</form>
+<div id="div1"></div>
+</body>
+</html>

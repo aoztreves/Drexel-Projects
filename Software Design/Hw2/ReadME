@@ -1,0 +1,18 @@
+ReadME
+
+I couldnt get the matching work so, matching doesnt work.
+
+when inputing for multiple choice you have to enter one by one, not with spaces.
+
+Or else everything else is working.
+
+I have added IO class in order to validate the inputs, it wasnt in my UML before.
+
+I tried to change the namings because of Mr.Salvages comments on my UML.
+
+From his comments, i also add couple more constructors which helped me a lot.
+
+You can find the Serialized files in SFiles and they are seperated into two groups, test and survey.They also include one full test 5 different type of questions, since matching doesn’t work.
+
+
+Aslan Oztreves

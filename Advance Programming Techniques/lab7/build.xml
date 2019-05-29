@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!-- 
+	Aslan Oztreves
+	May '07
+-->
+
+<project>
+
+  <path id="project.class.path">  
+    <pathelement path='${classpath}'/>
+    <pathelement location='.'/>
+  </path>
+
+  <target name='prob1' depends='prob1comp'>
+		<java classname='prob1'>
+			<classpath refid="project.class.path"/>
+			<arg value='Aslan'/>
+		</java>
+	</target>
+	
+  <target name='prob1comp'>
+    <javac includeantruntime='false' srcdir='./' includes='prob1.java'/>
+  </target>
+
+  <target name='prob2' depends='prob2comp'>
+		<java classname='prob2'>
+			<classpath refid="project.class.path"/>
+			<arg value='28'/>
+		</java>
+	</target>
+	
+  <target name='prob2comp'>
+    <javac includeantruntime='false' srcdir='.' includes='prob2.java' />
+  </target>
+
+  <target name='prob3' depends='prob3comp'>
+		<java classname='prob3'>
+			<classpath refid="project.class.path"/>
+			<arg value='1928'/>
+		</java>
+	</target>
+	
+  <target name='prob3comp'>
+    <javac includeantruntime='false' srcdir='./' includes='prob3.java'/>
+  </target>
+
+  <target name='prob4' depends='prob4comp'>
+		<java classname='prob4'>
+			<classpath refid="project.class.path"/>
+			<arg value='1'/>
+		</java>
+	</target>
+	
+  <target name='prob4comp'>
+    <javac includeantruntime='false' srcdir='./' includes='prob4.java'/>
+  </target>
+
+  <target name='clean'>
+    <delete>
+			<fileset dir='./'>
+				<include name='*.class'/>
+			</fileset>
+		</delete>
+  </target>
+
+</project>

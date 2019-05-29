@@ -1,0 +1,17 @@
+README 
+Aslan Oztreves
+CS 383
+Matthew Burlick
+Homework #2
+
+How To Run the Code:
+	I have used MATLAB to run my code. No external libraries were added.
+	You can run HW2.m file and it should compile.
+
+Notes:
+
+	There were many problems I faced. I wasn't able to do reduction of dimension so I did 2D. After couple tries 6th and 7th feature seemed like the closest to the figures given on the hw and other features looked odd. So I tried my code with k=2 and features 6 and 7.
+
+	I wasn't able to get to the purity so that is missing.
+
+Thank you.

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 4</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+	<script type="text/javascript">
+
+		function calculator(){
+			var local = "calculator";
+			var URL = "http://localhost:8080/"+ local;	
+			$.ajax({
+				type:"GET",
+				url:URL,
+				datatype:"html",
+				data:" ",
+				success:function(msg){
+					document.getElementById("content").innerHTML = msg;//printing in div if its success
+				}
+			});
+		}
+		function weather(){
+			var local = "weather";
+			var URL = "http://localhost:8080/"+ local;	
+			$.ajax({
+				type:"GET",
+				url:URL,
+				datatype:"html",
+				data:" ",
+				success:function(msg){
+					document.getElementById("content").innerHTML = msg;//printing in div if its success
+				}
+			});
+		}
+		function myFunction(){
+			var input = document.getElementById("input").value;//Getting user input
+			var dropDown = document.getElementById("dropdown").value;//Getting user choice
+			var URL = "http://localhost:8080/" + dropDown;//Creating the right URL
+			var exampleJSON = {
+				answer: input//Starting json with just the user answer to read off later with node
+			};
+			$.ajax({//Json for ajax
+				type:"GET",
+				url:URL,
+				datatype:"html",
+				data:exampleJSON,
+				success:function(msg){
+					document.getElementById("content").innerHTML = msg;//printing in div if its success
+				}
+			});
+		}
+		function getZipcode(){
+			//User Input
+			var userInput = document.getElementById("input").value;
+			//Starting a URL request for the geolookup
+			var xhttp = new XMLHttpRequest();
+		
+			xhttp.onreadystatechange = function(){//Actions inside the function
+				if(xhttp.status == 200 && xhttp.readyState == 4){
+					var json = $.parseJSON(xhttp.responseText);//extracting jsons
+					var zipCode = json.location.zip;//extracting zipcode
+					document.getElementById("content").innerHTML = zipCode + "<br>";//pasting zipcode on the div
+					getWeather(userInput,zipCode);//Forecasting weather in this function
+				}
+			}
+			var URL_FIRST = "http://api.wunderground.com/api/" + userInput + "/geolookup/q/autoip.json";
+			xhttp.open("GET",URL_FIRST,true);
+			xhttp.send();//closing the url request
+		}
+		function getWeather(userInput,zipCode){//Forecast finding for the zipcode
+			var xhttp_SECOND = new XMLHttpRequest();
+			xhttp_SECOND.onreadystatechange = function(){
+				if(xhttp_SECOND.status == 200 && xhttp_SECOND.readyState == 4){
+					var json1 = $.parseJSON(xhttp_SECOND.responseText);
+					for(var i=1; i< 25;i++){//loopong through hours to print every forecast to the div
+						var time = json1.hourly_forecast[i].FCTTIME.pretty;
+						var icon = json1.hourly_forecast[i].icon_url;
+						var temp = json1.hourly_forecast[i].temp.english;
+						document.getElementById("content").innerHTML += time + " " + "<img src ='" + icon + "'/>" + temp + "<br/>";//printing to the div
+					}		
+				}
+			}
+			var URL_SECOND = "http://api.wunderground.com/api/"+ userInput+"/hourly/q/"+ zipCode+".json";
+			xhttp_SECOND.open("GET",URL_SECOND,true);
+			xhttp_SECOND.send();//closing url
+		}
+	</script>
+</head>
+<body>
+<div id="div1"></div>
+<table style="width: 100%">
+	<tr>
+		<td> Navigation Bar </td>
+		<td> Banner </td>
+		<td> Content </td>
+	</tr>
+	<tr>
+		<td>
+			<ul>
+				<li><a href="./">Home!</a></li>
+				<li><a onclick="calculator();return false;" href="#">Compute!</a></li>
+				<li><a onclick="weather();return false;" href="#">Get the Weather!</a></li>
+			</ul>
+		</td>
+		<td><img src="http://drexel.edu/~/media/Images/facultyaffairs/DrexelDragon.ashx?h=335&w=500&hash=89599DE8C72BB3D58BC9FC224A59EE17782A9190"></td>
+	</tr>
+	<tr>
+		<td id="content">Content will go here</td>
+	</tr>
+</table>
+</body>
+</html>
